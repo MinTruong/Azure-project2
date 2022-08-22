@@ -3,8 +3,8 @@ from flask.logging import create_logger
 import logging
 
 import pandas as pd
-# from sklearn.externals import joblib
-import joblib
+from sklearn.externals import joblib
+#import joblib
 from sklearn.preprocessing import StandardScaler
 
 app = Flask(__name__)
@@ -13,7 +13,7 @@ LOG.setLevel(logging.INFO)
 
 def scale(payload):
     """Scales Payload"""
-
+    
     LOG.info("Scaling Payload: %s payload")
     scaler = StandardScaler().fit(payload)
     scaled_adhoc_predict = scaler.transform(payload)
@@ -21,7 +21,7 @@ def scale(payload):
 
 @app.route("/")
 def home():
-    html = "<h3>Sklearn Prediction Home</h3>"
+    html = "<h3>Hi, I am Minh</h3>"
     return html.format(format)
 
 # TO DO:  Log out the prediction value
