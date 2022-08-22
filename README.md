@@ -1,4 +1,4 @@
-![Python application test with Github Action](https://github.com/github/docs/actions/workflows/pythonapp.yml/badge.svg)
+![Python application test with Github Action](https://github.com/MinTruong/Azure-project2/actions/workflows/pythonapp.yml/badge.svg)
 
 # flask-ml-service
 A sample Flask application to showcase the Azure Pipeline.
