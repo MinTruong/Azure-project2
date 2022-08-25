@@ -14,4 +14,4 @@ docker images
 
 # Step 3: 
 # Run flask app
-docker run --name flask-uda -p 8000:8000 wepapp:latest
+docker run --name flask-uda -p 8000:80 wepapp:latest

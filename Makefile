@@ -1,13 +1,13 @@
 setup:
 	python3 -m venv ~/.flask-ml-azure 
 	source ~/.flask-ml-azure/bin/activate
-	
+	ma
 install:
 	pip install --upgrade pip &&\
 		pip install -r requirements.txt
 
 test:
-	python -m pytest -vv app.py
+	#python -m pytest -vv app.py
 
 lint:
 	#hadolint Dockerfile #uncomment to explore linting Dockerfiles
