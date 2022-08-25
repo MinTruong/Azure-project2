@@ -1,0 +1,9 @@
+az webapp up --name flaskappminh --resource-group Azuredevops --runtime "PYTHON:3.7" -l southcentralus
+
+cp -r nd082-Azure-Cloud-DevOps-Starter-Code/C2-AgileDevelopmentwithAzure/azure_pipelines_exercise/starter_files/ flask-ml-service/
+
+
+docker run --name wepapp2-uda -p 8000:8000 flask2:latest
+
+
+watch out joblib
