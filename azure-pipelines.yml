@@ -10,7 +10,7 @@ pool: myAgentPool
 
 variables:
   # TODO: Replace the service connection name
-  azureServiceConnectionId: 'UdacityDS - 71(a4b11da3-2642-4ae2-b8e0-ba40545a13d6)'
+  azureServiceConnectionId: 'a4b11da3-2642-4ae2-b8e0-ba40545a13d6'
   
   # TODO: Replace 'mywebapp193576' with the existing Web App name
   webAppName: 'flaskapp205386'
