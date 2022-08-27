@@ -1,4 +1,4 @@
-az webapp up --name flaskappminh --resource-group Azuredevops --runtime "PYTHON:3.7" -l southcentralus
+az webapp up --name flaskapp205386 --resource-group Azuredevops --runtime "PYTHON:3.7" -l southcentralus
 
 cp -r nd082-Azure-Cloud-DevOps-Starter-Code/C2-AgileDevelopmentwithAzure/azure_pipelines_exercise/starter_files/ flask-ml-service/
 
@@ -7,3 +7,21 @@ docker run --name wepapp2-uda -p 8000:8000 flask2:latest
 
 
 watch out joblib
+
+myPATH token
+zi7dbmpqzvpfmadm7j3pkmosoinuxerq7oke35bacrzwjgipc3wa
+
+sudo apt-get update
+sudo apt update
+sudo apt install software-properties-common
+
+sudo add-apt-repository ppa:deadsnakes/ppa
+sudo apt install python3.7 -y
+sudo apt-get install python3.7-venv -y
+sudo apt-get install python3-pip-y
+sudo apt-get install python3.7-distutils
+sudo apt-get -y install zip
+
+echo $PATH
+export PATH=$HOME/.local/bin:$PATH
+echo $PATH
