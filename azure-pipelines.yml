@@ -6,7 +6,7 @@
 trigger:
 - master
 
-pool: MyAP
+pool: MyAgentPool
 
 steps:
 - script: echo Hello, world!
