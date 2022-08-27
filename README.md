@@ -19,34 +19,149 @@ You'll use Github Actions along with a Makefile, requirements.txt and applicatio
 * LINK GoogleSheet:  [GoogleSheet](https://docs.google.com/spreadsheets/d/1dvOl1CK02xtG_mlnIVhDZJkzKRHMg1FTRIITKwTk6t0/edit?usp=sharing)
 
 ## Instructions
+### **Continuous Integration**
+This diagram shows how code can be tested automatically by enabling GitHub Actions. The push change to GitHub triggers the GitHub Actions container, which in turn runs a series of commands.
 
-<TODO:  
-* Architectural Diagram (Shows how key parts of the system work)>
+![infra](https://github.com/MinTruong/Azure-project2/blob/master/evidence/infra_1.png)
 
-<TODO:  Instructions for running the Python project.  How could a user with no context run this project without asking you for any help.  Include screenshots with explicit steps to create that work. Be sure to at least include the following screenshots:
+In this part, you reference Part I and Part II in **Continuous Delivery** of `Agile Development with Azure`
+*   Part I - Set Up Azure DevOps - Udacity Cloud Lab
+*   Part II - Set Up Github Repo
 
-* Project running on Azure App Service
+Commit [these starter files](https://github.com/MinTruong/Azure-project2) to your new repo. To do so, you will follow these steps:
 
-* Project cloned into Azure Cloud Shell
+```
+cd Documents
+# Clone the starter repo
+git clone https://github.com/MinTruong/Azure-project2.git
+# Clone the new repo
+git clone https://github.com/[username]/flask-ml-service.git
+# Copy the files from Azure-project2/* to the new repo manually.
+cp -r Azure-project2/ flask-ml-service/
+# Change the repo path as applicbale to you.
+cd flask-ml-service
+# Prepare for a push
+git add -A
+git status
+git commit -m "Upload the starter flask app"
+git push
+```
+After "pushing" the new repository, ensure to enable Azure Pipelines. To enable it in your Github, navigate to https://github.com/marketplace/azure-pipelines
 
-* Passing tests that are displayed after running the `make all` command from the `Makefile`
+Install/enable the Azure Pipelines marketplace app.
 
-* Output of a test run
+![Install/enable the Azure Pipeline marketplace app](https://github.com/MinTruong/Azure-project2/blob/master/evidence/install_azure_in_marketplay_app.png)
 
-* Successful deploy of the project in Azure Pipelines.  [Note the official documentation should be referred to and double checked as you setup CI/CD](https://docs.microsoft.com/en-us/azure/devops/pipelines/ecosystems/python-webapp?view=azure-devops).
+After that, you continue follow Part II.
 
-* Running Azure App Service from Azure Pipelines automatic deployment
+### **Continuous Delivery**
+We have referred in **Continuous Delivery** of `Agile Development with Azure`:
 
-* Successful prediction from deployed flask app in Azure Cloud Shell.  [Use this file as a template for the deployed prediction](https://github.com/udacity/nd082-Azure-Cloud-DevOps-Starter-Code/blob/master/C2-AgileDevelopmentwithAzure/project/starter_files/flask-sklearn/make_predict_azure_app.sh).
+* Part III - Create WebApp Manually
+* Part IV - Azure Pipeline Agent
+* Part V - Create a Pipeline
+
+In prat III, Create a web app service
+
+Create an app service and initially deploy your app in Cloud Shell, you can run command.sh file or run by command:
+```
+# Provide the web app name as a globally unique value. 
+az webapp up --name <Your_unique_app_name> --resource-group Azuredevops --runtime "PYTHON:3.7"
+```
+**Perform Prediction:**
+
+Update the make_predict_azure_app.sh file to match the deployed URL:
+```
+Update the make_predict_azure_app.sh file to match the deployed URL:
+```
+
+After that you continue follow part III and IV. in part V, Update azure-pipelines.yml file like that:
+```
+# Starter pipeline    
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+trigger:
+- master
+
+# TODO: Replace the agent pool name
+pool: myAgentPool
+
+variables:
+  # TODO: Replace the service connection name
+  azureServiceConnectionId: 'myserviceconnection'
+  
+  # TODO: Replace 'flaskapp205386' with the existing Web App name
+  webAppName: 'flaskapp205386'
+
+  # Environment name
+  environmentName: 'Flask-ML-Deploy'
+
+  # Project root folder. Point to the folder containing manage.py file.
+  projectRoot: $(System.DefaultWorkingDirectory)
+
+stages:
+- stage: Build
+  displayName: Build stage
+  jobs:
+  - job: BuildJob
+    pool: myAgentPool
+    steps:    
+    - script: |
+        python3.7 -m pip install --upgrade pip
+        python3.7 -m pip install setup
+        python3.7 -m pip install -r requirements.txt
+      workingDirectory: $(projectRoot)
+    - script: |
+        export PATH=$HOME/.local/bin:$PATH
+        make install
+        make lint
+      workingDirectory: $(projectRoot)
+      displayName: 'Run lint tests'
+    - task: ArchiveFiles@2
+      displayName: 'Archive files'
+      inputs:
+        rootFolderOrFile: '$(projectRoot)'
+        includeRootFolder: false
+        archiveType: zip
+        archiveFile: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
+        replaceExistingArchive: true
+
+    - upload: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
+      displayName: 'Upload package'
+      artifact: drop
+
+- stage: Deploy
+  displayName: 'Deploy Web App'
+  dependsOn: Build
+  condition: succeeded()
+  jobs:
+  - deployment: DeploymentJob
+    pool: myAgentPool
+    environment: $(environmentName)
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - task: AzureWebApp@1
+            displayName: 'Deploy Azure Web App : flask-ml-service'
+            inputs:
+              azureSubscription: $(azureServiceConnectionId)
+              appName: $(webAppName)
+              package: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
+```
+
+### **Successful prediction from deployed flask app in Azure Cloud Shell.** 
 The output should look similar to this:
-
 ```bash
 odl_user [ ~/Azure-project2 ]$ ./make_predict_azure_app.sh 
 Port: 443
 {"prediction":[20.35373177134412]}
 ```
 
-* Output of streamed log files from deployed application
+
+![Output of streamed log files from deployed application](https://github.com/MinTruong/Azure-project2/blob/master/evidence/Prediction_and_Log.png)
+
 
 > 
 

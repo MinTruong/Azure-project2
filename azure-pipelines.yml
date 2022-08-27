@@ -12,7 +12,7 @@ variables:
   # TODO: Replace the service connection name
   azureServiceConnectionId: 'myserviceconnection'
   
-  # TODO: Replace 'mywebapp193576' with the existing Web App name
+  # TODO: Replace 'flaskapp205386' with the existing Web App name
   webAppName: 'flaskapp205386'
 
   # Environment name
