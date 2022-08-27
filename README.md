@@ -14,9 +14,9 @@ You'll use Github Actions along with a Makefile, requirements.txt and applicatio
 
 ## Project Plan
 
-* LINK Trello board: ![Trello](https://trello.com/b/brXtmkmQ/building-a-ci-cd-pipeline)
+* LINK Trello board: [Trello](https://trello.com/b/brXtmkmQ/building-a-ci-cd-pipeline)
 
-* LINK GoogleSheet:  ![GoogleSheet](https://docs.google.com/spreadsheets/d/1dvOl1CK02xtG_mlnIVhDZJkzKRHMg1FTRIITKwTk6t0/edit?usp=sharing)
+* LINK GoogleSheet:  [GoogleSheet](https://docs.google.com/spreadsheets/d/1dvOl1CK02xtG_mlnIVhDZJkzKRHMg1FTRIITKwTk6t0/edit?usp=sharing)
 
 ## Instructions
 
@@ -57,7 +57,7 @@ I things in the future, i must create new branch and new environment for test
 
 ## Demo 
 
-LINK Demo: ![Demo](https://www.youtube.com/watch?v=DoHgNxkxUw8)
+LINK Demo: [Demo](https://www.youtube.com/watch?v=DoHgNxkxUw8)
 
 
 
