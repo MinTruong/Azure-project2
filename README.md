@@ -52,7 +52,9 @@ Install/enable the Azure Pipelines marketplace app.
 
 ![Install/enable the Azure Pipeline marketplace app](https://github.com/MinTruong/Azure-project2/blob/master/evidence/install_azure_in_marketplay_app.png)
 
-After that, you continue follow Part II.
+After that, you continue follow Part II to  configure the Azure Pipeline to allow accessing all public repos in your **`Github account`**
+
+![Github Actions](https://github.com/MinTruong/Azure-project2/blob/master/evidence/GitHub_Action_2.png)
 
 ### **Continuous Delivery**
 We have referred in **Continuous Delivery** of `Agile Development with Azure`:
@@ -91,8 +93,8 @@ variables:
   # TODO: Replace the service connection name
   azureServiceConnectionId: 'myserviceconnection'
   
-  # TODO: Replace 'flaskapp205386' with the existing Web App name
-  webAppName: 'flaskapp205386'
+  # TODO: Replace 'flaskapp-minh' with the existing Web App name
+  webAppName: 'flaskapp-minh'
 
   # Environment name
   environmentName: 'Flask-ML-Deploy'
