@@ -83,10 +83,23 @@ az webapp up --name <Your_unique_app_name> --resource-group Azuredevops --runtim
 ```
 **Perform Prediction:**
 
-Update the make_predict_azure_app.sh file to match the deployed URL:
+Update the make_predict_azure_app.sh file to match the deployed URL
+
+Successful prediction from deployed flask app in Azure Cloud Shell. 
+The output should look similar to this:
+```bash
+odl_user [ ~/Azure-project2 ]$ ./make_predict_azure_app.sh 
+Port: 443
+{"prediction":[20.35373177134412]}
+
+![Output of streamed log files from deployed application](https://github.com/MinTruong/Azure-project2/blob/master/evidence/Prediction_and_Log.png)
+
 ```
-Update the make_predict_azure_app.sh file to match the deployed URL:
+Next step we run **`locustfile.py`** on localhost to tracking response of method **POST** prediction (remember install locust)
 ```
+  locust -f locustfile.py
+```
+![locust](https://github.com/MinTruong/Azure-project2/blob/master/evidence/locust.png)
 
 After that you continue follow part III and IV. in part V, Update azure-pipelines.yml file like that:
 ```
@@ -108,7 +121,7 @@ variables:
   webAppName: 'flaskapp-minh'
 
   # Environment name
-  environmentName: 'Flask-ML-Deploy'
+  environmentName: 'Flask'
 
   # Project root folder. Point to the folder containing manage.py file.
   projectRoot: $(System.DefaultWorkingDirectory)
@@ -163,17 +176,14 @@ stages:
               appName: $(webAppName)
               package: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
 ```
-
-### **Successful prediction from deployed flask app in Azure Cloud Shell.** 
-The output should look similar to this:
-```bash
-odl_user [ ~/Azure-project2 ]$ ./make_predict_azure_app.sh 
-Port: 443
-{"prediction":[20.35373177134412]}
-```
+After we click on Run 
 
 
-![Output of streamed log files from deployed application](https://github.com/MinTruong/Azure-project2/blob/master/evidence/Prediction_and_Log.png)
+![modify azure-pipelines.yml ](https://github.com/MinTruong/Azure-project2/blob/master/evidence/pipeline_1.png)
+
+
+![Deploy](https://github.com/MinTruong/Azure-project2/blob/master/evidence/pipeline_1.png)
+
 
 
 > 
