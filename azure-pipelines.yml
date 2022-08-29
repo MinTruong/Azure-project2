@@ -16,7 +16,7 @@ variables:
   webAppName: 'flaskapp-minh'
 
   # Environment name
-  environmentName: 'Flask-ML-Deploy'
+  environmentName: 'Flask'
 
   # Project root folder. Point to the folder containing manage.py file.
   projectRoot: $(System.DefaultWorkingDirectory)
