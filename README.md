@@ -182,7 +182,7 @@ After we click on Run
 ![modify azure-pipelines.yml ](https://github.com/MinTruong/Azure-project2/blob/master/evidence/pipeline_1.png)
 
 
-![Deploy](https://github.com/MinTruong/Azure-project2/blob/master/evidence/pipeline_1.png)
+![Deploy](https://github.com/MinTruong/Azure-project2/blob/master/evidence/pipeline_2.png)
 
 
 
