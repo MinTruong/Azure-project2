@@ -24,7 +24,19 @@ This diagram shows how code can be tested automatically by enabling GitHub Actio
 
 ![infra](https://github.com/MinTruong/Azure-project2/blob/master/evidence/infra_1.png)
 
-In this part, you reference Part I and Part II in **Continuous Delivery** of `Agile Development with Azure`
+**Using GitHub Actions for Continuous Integration**
+
+To do continuous integration, we need a build server—a centralized machine that is dedicated to continuously building the project every time code is committed to it. In this course, we'll be using GitHub actions as our build server. One of the things that makes GitHub Actions extremely convenient is that it is integrated with GitHub, which means that we can have it run builds automatically whenever we commit code to our GitHub repo. Let's check out how to set it up.
+
+We have to configure **`.github\workflows\pythonapp.ymal`** like so:
+
+![actions file](https://github.com/MinTruong/Azure-project2/blob/master/evidence/pythonapp.png)
+
+After, we have use Github actions.
+
+![Github Actions](https://github.com/MinTruong/Azure-project2/blob/master/evidence/GitHub_Action_2.png)
+
+Next part, you reference Part I and Part II in **Continuous Delivery** of `Agile Development with Azure`
 *   Part I - Set Up Azure DevOps - Udacity Cloud Lab
 *   Part II - Set Up Github Repo
 
@@ -52,9 +64,8 @@ Install/enable the Azure Pipelines marketplace app.
 
 ![Install/enable the Azure Pipeline marketplace app](https://github.com/MinTruong/Azure-project2/blob/master/evidence/install_azure_in_marketplay_app.png)
 
-After that, you continue follow Part II to  configure the Azure Pipeline to allow accessing all public repos in your **`Github account`**
+After that, you continue follow Part II 
 
-![Github Actions](https://github.com/MinTruong/Azure-project2/blob/master/evidence/GitHub_Action_2.png)
 
 ### **Continuous Delivery**
 We have referred in **Continuous Delivery** of `Agile Development with Azure`:
