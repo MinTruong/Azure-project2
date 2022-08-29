@@ -12,8 +12,8 @@ variables:
   # TODO: Replace the service connection name
   azureServiceConnectionId: 'myserviceconnection'
   
-  # TODO: Replace 'flaskapp205386' with the existing Web App name
-  webAppName: 'flaskapp205386'
+  # TODO: Replace 'flaskapp-minh' with the existing Web App name
+  webAppName: 'flaskapp-minh'
 
   # Environment name
   environmentName: 'Flask-ML-Deploy'
